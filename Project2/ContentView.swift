@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var countries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Nigeria", "Poland", "Russia", "Spain", "UK", "US"].shuffled()
+    @State private var countries = ["Canada", "Estonia", "France", "Germany", "Ireland", "Italy", "Nigeria", "Poland", "Russia", "Spain", "UK", "US"].shuffled()
     @State private var correctAnswer = Int.random(in: 0...2)
     
     @State private var showingScore = false
@@ -38,10 +38,13 @@ struct ContentView: View {
                         self.flagTapped(number)
                     }) {
                         Image(self.countries[number])
-                            .renderingMode(.original)
+ //                           .renderingMode(.original)
+                            .resizable()
+                            .frame(width: 200, height: 100)
                             .clipShape(Capsule())
                             .overlay(Capsule().stroke(Color.black, lineWidth: 1))
                             .shadow(color: .black, radius: 2)
+                            
                     }
                 }
                 Text("HIGHSCORE: \(highscore)")
